@@ -10,7 +10,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "/start - Bot start karo\\n/help - Madad dekho"
+        "/start - Bot start karo\n/help - Madad dekho"
     )
 
 def main():
@@ -19,8 +19,8 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
 
-    print("✅ Bot chal raha hai...")
+    print("Bot chal raha hai...")
     app.run_polling(close_loop=False)
 
-if __name__ == "__main__":
+if name == "main":
     main()
