@@ -22,5 +22,6 @@ def main():
     print("Bot chal raha hai...")
     app.run_polling(close_loop=False)
 
+# नीचे की लाइन बिल्कुल ऐसी ही होनी चाहिए
 if name == "main":
     main()
