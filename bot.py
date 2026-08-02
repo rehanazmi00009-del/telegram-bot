@@ -10,4 +10,4 @@ app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 
 print("Bot chal raha hai...")
-app.run_polling()
+app.run_polling(drop_pending_updates=True)
