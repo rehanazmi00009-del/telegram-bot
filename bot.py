@@ -1,28 +1,20 @@
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram.ext import Application, CommandHandler, ContextTypes
 
-# Apna Telegram Bot Token yahan likho
 TOKEN = "8870339525:AAGdDtbWMggpA4sOPC9Epg133f_d_P9Du0E"
 
-# /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "👋 Hello Rehan!\\n\\n🤖 Bot bilkul sahi chal raha hai ✅"
+        "👋 Hello Rehan! Bot bilkul sahi chal raha hai."
     )
 
-# Normal message ka reply
-async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    text = update.message.text
-    await update.message.reply_text(f"📩 Aapne bheja: {text}")
+def main():
+    app = Application.builder().token(TOKEN).build()
 
-# Bot build karo
-app = ApplicationBuilder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
 
-# Handlers add karo
-app.add_handler(CommandHandler("start", start))
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    print("Bot chal raha hai...")
+    app.run_polling()
 
-print("✅ Telegram Bot chal raha hai...")
-
-# Bot start karo
-app.run_polling()
+if __name__ == "__main__":
+    main()
