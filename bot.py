@@ -2,7 +2,7 @@ import asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-TOKEN = "8870339525:AAG6-t_qAVxIP3i-h1ZJeSBXOo0cgK3uzdk"
+TOKEN = "8870339525:AAGWARujsUAWCdiOn4uKzItiN45_AmvkmlU"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Hello Rehan! Bot chal raha hai ✅")
