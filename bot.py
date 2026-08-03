@@ -3,7 +3,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 # BotFather token
-TOKEN = "8870339525:AAGdDtbWMggpA4sOPC9Epg133f_d_P9Du0E"
+TOKEN = "8870339525:AAG6-t_qAVxIP3i-h1ZJeSBXOo0cgK3uzdk"
 
 # /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
