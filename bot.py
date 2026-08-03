@@ -1,40 +1,44 @@
-import asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# BotFather token
+# 🔑 Apna NAYA Bot Token yahan dalo
 TOKEN = "8870339525:AAG6-t_qAVxIP3i-h1ZJeSBXOo0cgK3uzdk"
 
-# /start command
+# /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Hello Asif! 🤖\nBot Render par successfully chal raha hai ✅"
+        "Hello Rehan! 🤖\nBot Render par successfully chal raha hai ✅"
     )
 
-# /help command
+# /help
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Commands:\n/start - bot start karo\n/help - help dekho"
+        "📌 Available Commands:\n/start - Bot start karo\n/help - Help dekho\n/about - Bot ke baare mein\n/photo - Photo pao"
     )
 
+# /about
+async def about(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🤖 Yeh Rehan ka Telegram Bot hai.\n🚀 Render par 24x7 chal raha hai."
+    )
 
-async def main():
-    app = Application.builder().token(TOKEN).build()
+# /photo
+async def photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_photo(
+        photo="https://picsum.photos/400/300",
+        caption="📷 Hello Rehan! Yeh tumhare bot ki test photo hai ✅"
+    )
 
-    # handlers
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("help", help_command))
+# App banaye
+app = Application.builder().token(TOKEN).build()
 
-    print("Bot started successfully...")
+# Handlers add kare
+app.add_handler(CommandHandler("start", start))
+app.add_handler(CommandHandler("help", help_command))
+app.add_handler(CommandHandler("about", about))
+app.add_handler(CommandHandler("photo", photo))
 
-    # start bot
-    await app.initialize()
-    await app.start()
-    await app.updater.start_polling()
+print("🤖 Rehan Bot started successfully...")
 
-    # bot ko hamesha chalu rakho
-    await asyncio.Event().wait()
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
+# Bot chalu kare
+app.run_polling()
