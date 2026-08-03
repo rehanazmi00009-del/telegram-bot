@@ -1,7 +1,7 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# अपना BotFather वाला token यहाँ डालो
+# BotFather token
 TOKEN = "8870339525:AAGdDtbWMggpA4sOPC9Epg133f_d_P9Du0E"
 
 # /start command
@@ -28,5 +28,5 @@ def main():
     app.run_polling()
 
 
-if name == "main":
+if __name == "main":
     main()
