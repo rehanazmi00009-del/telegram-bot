@@ -1,3 +1,4 @@
+import asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
@@ -17,16 +18,23 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-def main():
+async def main():
     app = Application.builder().token(TOKEN).build()
 
+    # handlers
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
 
     print("Bot started successfully...")
 
-    app.run_polling()
+    # start bot
+    await app.initialize()
+    await app.start()
+    await app.updater.start_polling()
+
+    # bot ko hamesha chalu rakho
+    await asyncio.Event().wait()
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
